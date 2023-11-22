@@ -28,33 +28,8 @@ if [ $? -eq 0 ]; then
     server_name=$(echo "$speedtest_result" | grep "Server" | cut -d ':' -f2- | sed 's/(id = [0-9]*)//') # Menghilangkan "(id = ...)"
     result_url=$(echo "$speedtest_result" | grep "Result URL" | cut -d ':' -f2-)
 
-    # Mengambil informasi dari perintah curl
-    curl_result=$(curl -sS ipinfo.io/json?token=7b5dbaccc41db0)
-    ip=$(echo "$curl_result" | jq -r '.ip')
-    hostname=$(echo "$curl_result" | jq -r '.hostname')
-    org=$(echo "$curl_result" | jq -r '.org')
-    timezone=$(echo "$curl_result" | jq -r '.timezone')
-
-    # Menambahkan tanggal dan waktu terakhir pembaruan
-    current_time=$(date +"%d-%m-%Y %I:%M %p")
-
     # Membuat pesan dengan format yang diinginkan jika speedtest berhasil
-    message="
-╔═══════HASIL SPEEDTEST═════════╗
-║
-╠ 𝗛𝗢𝗦𝗧: $(uci get system.@system[0].hostname | tr -d '\0')
-╠ 𝗣𝗜𝗡𝗚: $ping ms
-╠ 𝗜𝗣: $ip
-╠ 𝗦𝗘𝗥𝗩𝗘𝗥: $server_name
-╠ 𝗜𝗦𝗣: $org
-╠ 𝗥𝗘𝗚𝗜𝗢𝗡: $timezone
-╠ 𝗗𝗢𝗪𝗡𝗟𝗢𝗔𝗗: $download Mbps
-╠ 𝗨𝗣𝗟𝗢𝗔𝗗: $upload Mbps 
-╠═════════════════════════════╗
-╠ 𝗟𝗔𝗦𝗧 𝗨𝗣𝗗𝗔𝗧𝗘: $current_time
-$result_url
-╚═════════════════════════════╝
-"
+    message="$result_url"
 else
     # Jika speedtest gagal, maka mengirimkan pesan notifikasi
     message="GAGAL SPEEDTEST....."

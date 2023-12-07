@@ -20,7 +20,7 @@ get_ram_status() {
 }
 
 # READ AUTH
-if [ -f "/root/TgBotWRT/AUTH" ]; then
+if [ -f "/root/TELEXWRT/AUTH" ]; then
     TOKEN=$(head -n 1 /root/TgBotWRT/AUTH)
     ID=$(tail -n 1 /root/TgBotWRT/AUTH)
 else

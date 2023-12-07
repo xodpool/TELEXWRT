@@ -10,15 +10,15 @@ opkg install sysstat
 pip3 install telepot requests python-telegram-bot
 opkg list-installed | grep python3
 pip3 list
-git clone https://github.com/EdyDevz/TgBotWRT
-mv /root/TgBotWRT/edy /etc/init.d/
-mv /root/TgBotWRT/edy.py /usr/bin/
+git clone https://github.com/ahmadqsyaa/TELEXWRT
+mv /root/TELEXWRT/edy /etc/init.d/
+mv /root/TELEXWRT/edy.py /usr/bin/
 chmod +x /etc/init.d/edy
 chmod +x /usr/bin/edy.py
 chmod +x /root/TgBotWRT/*
-rm -rf /root/TgBotWRT/plugins
+rm -rf /root/TELEXWRT/plugins
 clear
-nano /root/TgBotWRT/AUTH
+nano /root/TELEXWRT/AUTH
 service edy enable
 service edy start
 clear
@@ -27,13 +27,4 @@ sleep 5
 echo "INSTALLING TOOLS....."
 sleep 5
 clear
-echo "
-╔════════════════════════════════════════════════════════╗
- ███████╗██████╗░██╗░░░██╗░██╗░░░░░░░██╗██████╗░████████╗
- ██╔════╝██╔══██╗╚██╗░██╔╝░██║░░██╗░░██║██╔══██╗╚══██╔══╝
- █████╗░░██║░░██║░╚████╔╝░░╚██╗████╗██╔╝██████╔╝░░░██║░░░
- ██╔══╝░░██║░░██║░░╚██╔╝░░░░████╔═████║░██╔══██╗░░░██║░░░
- ███████╗██████╔╝░░░██║░░░░░╚██╔╝░╚██╔╝░██║░░██║░░░██║░░░
- ╚══════╝╚═════╝░░░░╚═╝░░░░░░╚═╝░░░╚═╝░░╚═╝░░╚═╝░░░╚═╝░░░
-╚════════════════════════════════════════════════════════╝"
 echo "[+] THAKS FOR USE MY TOOLS & SUPPORT ME :)"

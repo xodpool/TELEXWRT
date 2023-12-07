@@ -9,7 +9,7 @@ import datetime
 import random
 
 # Membaca token dan chat ID admin dari berkas token.txt
-with open('/root/TgBotWRT/AUTH', 'r') as token_file:
+with open('/root/TELEXWRT/AUTH', 'r') as token_file:
     lines = token_file.readlines()
     if len(lines) >= 2:
         TOKEN = lines[0].strip()
@@ -22,10 +22,10 @@ with open('/root/TgBotWRT/AUTH', 'r') as token_file:
 admins = set([USER_ID])
 
 # Lokasi file penanda (semaphore) untuk berhenti
-STOP_FILE_PATH = '/root/TgBotWRT/stop_bot.txt'
+STOP_FILE_PATH = '/root/TELEXWRT/stop_bot.txt'
 
 # Lokasi file cmd
-CMD_FILE_PATH = '/root/TgBotWRT/cmd'
+CMD_FILE_PATH = '/root/TELEXWRT/cmd'
 
 # URL untuk mengambil menu dari url/raw
 MENU_RAW_URL = 'https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/plugins/tools/menu/menu'  # Ganti dengan URL url/raw yang sesuai

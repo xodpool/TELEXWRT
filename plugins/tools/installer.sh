@@ -18,13 +18,7 @@ chmod +x /usr/bin/edy.py
 chmod +x /root/TgBotWRT/*
 rm -rf /root/TELEXWRT/plugins
 clear
-nano /root/TELEXWRT/AUTH
-service edy enable
-service edy start
+echo "silahkan isi id & token => nano /root/TELEXWRT/AUTH"
+sleep 2
 clear
-echo "PLEASE WAIT....."
-sleep 5
-echo "INSTALLING TOOLS....."
-sleep 5
-clear
-echo "[+] THAKS FOR USE MY TOOLS & SUPPORT ME :)"
+echo "silahkan ketik service edy enable, jika sudah ketikan service edy start"

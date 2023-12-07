@@ -21,8 +21,8 @@ get_ram_status() {
 
 # READ AUTH
 if [ -f "/root/TELEXWRT/AUTH" ]; then
-    TOKEN=$(head -n 1 /root/TgBotWRT/AUTH)
-    ID=$(tail -n 1 /root/TgBotWRT/AUTH)
+    TOKEN=$(head -n 1 /root/TELEXWRT/AUTH)
+    ID=$(tail -n 1 /root/TELEXWRT/AUTH)
 else
     echo "Berkas auth tidak ditemukan."
     exit 1

@@ -2,7 +2,7 @@
 
 # READ AUTH
 if [ -f "/root/TELEXWRT/AUTH" ]; then
-    IFS=$'\n' read -d '' -r -a lines < "/root/TgBotWRT/AUTH"
+    IFS=$'\n' read -d '' -r -a lines < "/root/TELEXWRT/AUTH"
     if [ "${#lines[@]}" -ge 2 ]; then
         bot_token="${lines[0]}"
         CHAT_ID="${lines[1]}"

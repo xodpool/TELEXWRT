@@ -3,8 +3,8 @@
 service passwall restart
 
 # READ AUTH
-if [ -f "/root/TgBotWRT/AUTH" ]; then
-    IFS=$'\n' read -d '' -r -a lines < "/root/TgBotWRT/AUTH"
+if [ -f "/root/TELEXWRT/AUTH" ]; then
+    IFS=$'\n' read -d '' -r -a lines < "/root/TELEXWRT/AUTH"
     if [ "${#lines[@]}" -ge 2 ]; then
         BOT_TOKEN="${lines[0]}"
         CHAT_ID="${lines[1]}"

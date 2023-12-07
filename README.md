@@ -9,6 +9,12 @@
 ### NOTE❗
 ***TUTORIAL UDAH LENGKAP NJENG! GAUSAH BANYAK TANYA! BACA SAMPE KELAR BIAR PAHAM!!!***
 
+* **BOT ONLINE = RUNNING SCRIPT VIA ONLINE SCRIPT**
+* **BOT OFFLINE = RUNNING SCRIPT VIA OFFLINE SCRIPT**
+
+**SESUAIKAN DENGAN KEBUTUHAN**
+
+
 ### REQUIREMENTS
 
 * `git`
@@ -18,6 +24,7 @@
 * `jq`
 * `sysstat`
 * `telepot`
+* `nano`
 * `python-telegram-bot`
 * `ookla-speedtest-1.1.1`
 
@@ -53,6 +60,10 @@ opkg install sysstat
 ```
 
 ```
+opkg install nano
+```
+
+```
 pip3 install telepot requests python-telegram-bot
 ```
 
@@ -61,26 +72,46 @@ opkg list-installed | grep python3 && pip3 list
 ```
 ##### CLONE REPO
 
+
+**ONLINE SCRIPT**
 ```
-git clone https://github.com/EdyDevz/TgBotWRT
+git clone -b ONLINE https://github.com/ahmadqsyaa/TELEXWRT
 ```
-##### MOVE ALL PACKAGE
+
+**OFFLINE SCRIPT**
+```
+git clone -b OFFLINE https://github.com/ahmadqsyaa/TELEXWRT
+```
+
+##### MOVE ALL PACKAGE ONLINE SCRIPT
 
 ```
-mv /root/TgBotWRT/edy /etc/init.d/ && mv /root/TgBotWRT/edy.py /usr/bin/ && chmod +x /usr/bin/edy.py && chmod +x /etc/init.d/edy && rm -rf /root/TgBotWRT/plugins
+mv /root/TELEXWRT/edy /etc/init.d/ && mv /root/TELEXWRT/edy.py /usr/bin/ && chmod +x /usr/bin/edy.py && chmod +x /etc/init.d/edy && chmod +x /root/TELEXWRT/*
+```
+
+##### MOVE ALL PACKAGE OFFLINE SCRIPT
+
+```
+mv /root/TELEXWRT/edy /etc/init.d/ && mv /root/TELEXWRT/edy.py /usr/bin/ && chmod +x /usr/bin/edy.py && chmod +x /etc/init.d/edy && chmod +x /root/TELEXWRT/* && chmod +x /root/TELEXWRT/TOOLS/*
 ```
 *
 *
-##### AUTO INSTALLER 🚀
+##### BOT ONLINE AUTO INSTALLER 🚀
 
 ```
-opkg update && (cd /tmp && curl -sLko install https://raw.githubusercontent.com/EdyDevz/TgBotWRT/main/plugins/tools/installer.sh && bash install)
+opkg update && (cd /tmp && curl -sLko install https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/online-installer.sh && bash install)
+```
+*
+*
+##### BOT OFFLINE AUTO INSTALLER 🚀
+```
+opkg update && (cd /tmp && curl -sLko install https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/offline-installer.sh && bash install)
 ```
 *
 *
 ##### EDIT AUTH ADMIN & BOT
 ```
-nano /root/TgBotWRT/AUTH
+nano /root/TELEXWRT/AUTH
 ```
 *
 *
@@ -120,11 +151,22 @@ service edy stop
 ##### UNINSTALLER BOT 🗑️
 
 ```
-opkg update && (cd /tmp && curl -sLko install https://raw.githubusercontent.com/EdyDevz/TgBotWRT/main/plugins/tools/uninstaller.sh && bash install)
+opkg update && (cd /tmp && curl -sLko install https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/uninstaller.sh && bash install)
 ```
 
 *
 *
+
+
+##### SPEEDTEST INSTALLER 🚀
+
+```
+opkg update && (cd /tmp && curl -sLko install https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/speedtest-installer.sh && bash install)
+```
+
+*
+*
+
 
 ## Commands
 
@@ -137,19 +179,19 @@ opkg update && (cd /tmp && curl -sLko install https://raw.githubusercontent.com/
  * `/ping` ***- Ping Server ⚙️***
  * `/clear` ***- Cache Memory Purge 🗑️***
  * `/restart` ***- Restart BOT 🤖***
- * `/reboot` ***- Reboot STB ♻️***
+ * `/reboot` ***- Reboot Server ♻️***
  * `/shutdown` ***- Shutdown Server 📴***
  * `/ocstart` ***- Start OpenClash 🟢***
  * `/ocrestart` ***- Restart OpenClash 🟡***
  * `/ocstop` ***- Stop OpenClash 🔴***
- * `/testbw` ***- Test BandWith Limit 🚀***
+ * `/stop` ***- Stop BOT ❌***
 
 ## CREDIT
 
-* **MBAH EDY ( DEV )**
-* **KARTOLO**
-* **SENTOLOP**
+* **MBAH EDY ( DEVELOPER )**
 * **BUJEL** ***( ADMIN GANTENG )***
+* **KARTOLO** ***( SCRIPT MAKER )***
+* **AHMADQSYAA** ***( KANG COMOT )***
 * **THANKS FOR ALL MEMBER IGH & TESTER**
 
 ##### READ THIS ❗

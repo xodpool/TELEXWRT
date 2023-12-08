@@ -21,11 +21,6 @@ speedtest_result=$(speedtest)
 # Cek apakah speedtest berhasil atau gagal
 if [ $? -eq 0 ]; then
     # Jika berhasil, maka mengambil nilai-nilai yang diperlukan
-    download=$(echo "$speedtest_result" | grep "Download" | awk '{print $2}')
-    upload=$(echo "$speedtest_result" | grep "Upload" | awk '{print $2}')
-    ping=$(echo "$speedtest_result" | grep "Latency" | awk '{print $2}' | sed 's/ms//')
-    isp=$(echo "$speedtest_result" | grep "ISP" | cut -d ':' -f2-)
-    server_name=$(echo "$speedtest_result" | grep "Server" | cut -d ':' -f2- | sed 's/(id = [0-9]*)//') # Menghilangkan "(id = ...)"
     result_url=$(echo "$speedtest_result" | grep "Result URL" | cut -d ':' -f2-)
 
     # Membuat pesan dengan format yang diinginkan jika speedtest berhasil

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+service edy restart
+
 # READ AUTH
 if [ -f "/root/TELEXWRT/AUTH" ]; then
     IFS=$'\n' read -d '' -r -a lines < "/root/TgBotWRT/AUTH"
@@ -20,5 +22,3 @@ MSG="bot success to restar"
 
 # Kirim pesan notifikasi ke bot Telegram
 curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" -d "chat_id=$CHAT_ID" -d "text=$MSG"
-
-service edy restart

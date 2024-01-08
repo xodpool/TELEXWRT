@@ -22,9 +22,10 @@ speedtest_result=$(speedtest)
 if [ $? -eq 0 ]; then
     # Jika berhasil, maka mengambil nilai-nilai yang diperlukan
     result_url=$(echo "$speedtest_result" | grep "Result URL" | cut -d ':' -f2-)
+    
 
     # Membuat pesan dengan format yang diinginkan jika speedtest berhasil
-    message="$result_url"
+    message="$speedtest_result"
 else
     # Jika speedtest gagal, maka mengirimkan pesan notifikasi
     message="GAGAL SPEEDTEST....."

@@ -13,6 +13,7 @@ SCRIPTS["ocstart"]="https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/p
 SCRIPTS["ocrestart"]="https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/plugins/tools/menu/ocrestart.sh"
 SCRIPTS["ocstop"]="https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/plugins/tools/menu/ocstop.sh"
 SCRIPTS["clear"]="https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/plugins/tools/menu/clear.sh"
+SCRIPTS["opkgupdate"]="https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/plugins/tools/menu/opkgupdate.sh"
 # Tambahkan judul dan URL lain sesuai kebutuhan
 
 # Memeriksa apakah argumen yang diberikan adalah judul yang valid

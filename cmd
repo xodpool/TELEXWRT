@@ -10,3 +10,4 @@
 /ocstart: bash /root/TELEXWRT/menu.sh ocstart
 /ocrestart: bash /root/TELEXWRT/menu.sh ocrestart
 /ocstop: bash /root/TELEXWRT/menu.sh ocstop
+/opkg-update: bash /root/TELEXWRT/opkgupdate.sh opkgupdate

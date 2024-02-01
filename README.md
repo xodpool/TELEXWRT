@@ -1,13 +1,15 @@
 ### TELEGRAM BOT FOR OPENWRT
 
-* [**OWNER**](https://t.me/EdyDevz)
-
+* [**OWNER DEV**](t.me/EdyDevz)
+* [**DECODE**](t.me/rickk1kch)
+  
 ##### TUTORIAL
 * [**VIEW ON YOUTUBE**](https://youtu.be/4zhOv0Ke_Vs?si=B2qRDOyYifILzSur)
 
 
 ### NOTE❗
 ***TUTORIAL UDAH LENGKAP NJENG! GAUSAH BANYAK TANYA! BACA SAMPE KELAR BIAR PAHAM!!!***
+**THIS CODE IS THE RECODE RESULT OF MBAH EDY**
 
 ### REQUIREMENTS
 
@@ -149,6 +151,7 @@ opkg update && (cd /tmp && curl -sLko install https://raw.githubusercontent.com/
 * **KARTOLO**
 * **SENTOLOP**
 * **BUJEL** ***( ADMIN GANTENG )***
+* **RECODE** ***ahmadqsyaa*** **( TANKS EDY! )**
 * **THANKS FOR ALL MEMBER IGH & TESTER**
 
 ##### READ THIS ❗

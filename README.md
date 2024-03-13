@@ -1,7 +1,7 @@
 ### TELEGRAM BOT FOR OPENWRT
 
-* [**OWNER DEV**](t.me/EdyDevz)
-* [**DECODE**](t.me/rickk1kch)
+* [**OWNER DEV**](https//.me/EdyDevz)
+* [**DECODE (saya)**](https://t.me/rickk1kch)
   
 ##### TUTORIAL
 * [**VIEW ON YOUTUBE**](https://youtu.be/4zhOv0Ke_Vs?si=B2qRDOyYifILzSur)

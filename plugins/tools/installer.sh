@@ -18,16 +18,18 @@ chmod +x /usr/bin/edy.py
 chmod +x /root/TgBotWRT/*
 rm -rf /root/TELEXWRT/plugins
 clear
-echo "masukan id username & token bot"
-sleep 2
+echo "masukan id username & token bot =>"
+sleep 
 clear
 nano /root/TELEXWRT/AUTH
-sleep 2
+sleep 4
 clear
 service edy enable
 echo "mengaktifkan service ..."
-sleep 2
-service edy start
+sleep 4
 echo "success service start"
+clear
+sleep 4
+service edy start
 sleep 2
 exit

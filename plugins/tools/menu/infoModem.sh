@@ -1,4 +1,5 @@
 #!/bin/sh
+#source Github https://github.com/Haris131/e3372
 
 # READ AUTH
 if [ -f "/root/TELEXWRT/AUTH" ]; then

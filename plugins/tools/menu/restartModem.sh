@@ -3,10 +3,10 @@
 #source Github https://github.com/Haris131/e3372
 
 # READ AUTH
-if [ -f "/root/TgBotWRT/AUTH" ]; then
-    IFS=$'\n' read -d '' -r -a lines < "/root/TgBotWRT/AUTH"
+if [ -f "/root/TELEXWRT/AUTH" ]; then
+    IFS=$'\n' read -d '' -r -a lines < "/root/TELEXWRT/AUTH"
     if [ "${#lines[@]}" -ge 2 ]; then
-        bot_token="${lines[0]}"
+        BOT_TOKEN="${lines[0]}"
         CHAT_ID="${lines[1]}"
     else
         echo "Berkas auth harus memiliki setidaknya 2 baris (token dan chat ID Anda)."

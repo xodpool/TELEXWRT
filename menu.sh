@@ -14,6 +14,8 @@ SCRIPTS["ocrestart"]="https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main
 SCRIPTS["ocstop"]="https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/plugins/tools/menu/ocstop.sh"
 SCRIPTS["clear"]="https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/plugins/tools/menu/clear.sh"
 SCRIPTS["opkgupdate"]="https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/plugins/tools/menu/opkgupdate.sh"
+SCRIPTS["info-modem"]="https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/plugins/tools/menu/infoModem.sh"
+SCRIPTS["restart-modem"]="https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/plugins/tools/menu/restartModem.sh"
 # Tambahkan judul dan URL lain sesuai kebutuhan
 
 # Memeriksa apakah argumen yang diberikan adalah judul yang valid

@@ -15,6 +15,13 @@ else
     exit 1
 fi
 
+send_telegram_message() {
+    curl -s -X POST "https://api.telegram.org/bot$BOT_TOKEN/sendMessage" \
+        -d "chat_id=$CHAT_ID" \
+        -d "text=$1" \
+        -d "parse_mode=Markdown"
+}
+
 #auth
 ipmodem="192.168.8.1"
 pass="admin"
@@ -235,4 +242,4 @@ info(){
 }
 
 info
-curl -s -X POST "https://api.telegram.org/bot$bot_token/sendMessage" -d "chat_id=$CHAT_ID" -d "text=$message" -d "parse_mode=Markdown"
+send_telegram_message "$message"

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#source Github https://github.com/Haris131/e3372
 
 ipmodem="192.168.8.1"
 pass="admin"

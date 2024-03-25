@@ -1,6 +1,23 @@
 #!/bin/bash
+
 #source Github https://github.com/Haris131/e3372
 
+# READ AUTH
+if [ -f "/root/TgBotWRT/AUTH" ]; then
+    IFS=$'\n' read -d '' -r -a lines < "/root/TgBotWRT/AUTH"
+    if [ "${#lines[@]}" -ge 2 ]; then
+        bot_token="${lines[0]}"
+        CHAT_ID="${lines[1]}"
+    else
+        echo "Berkas auth harus memiliki setidaknya 2 baris (token dan chat ID Anda)."
+        exit 1
+    fi
+else
+    echo "Berkas auth tidak ditemukan."
+    exit 1
+fi
+
+#auth
 ipmodem="192.168.8.1"
 pass="admin"
 
@@ -200,5 +217,24 @@ info(){
  echo -e "DL Frequency : $dlfreq"
  echo -e "UP Frequency : $upfreq"
  echo -e "---------------------------"
+ message="
+ ----------------------------------------
+ Operator : $operator
+ Device : $tp
+ Wan IP : $ipp
+ DNS 1 : $dns1
+ DNS 2 : $dns2
+ $(echo -ne "Network : ";network $net)
+ Total Upload : $tup
+ Total Download : $tdd
+ Band : $band
+ PCI : $pci
+ Cell ID : $cellid
+ DL Frequency : $dlfreq
+ UP Frequency : $upfreq
+ ----------------------------------------
+ "
+ curl -s -X POST "https://api.telegram.org/bot$bot_token/sendMessage" -d "chat_id=$CHAT_ID" -d "text=$message" -d "parse_mode=Markdown"
 }
+
 info

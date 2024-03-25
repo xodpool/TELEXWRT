@@ -1,4 +1,5 @@
 #!/bin/bash
+#source Github https://github.com/Haris131/e3372
 
 # auth
 ipmodem="192.168.8.1"

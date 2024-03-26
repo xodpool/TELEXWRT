@@ -17,8 +17,9 @@ chmod +x /etc/init.d/edy
 chmod +x /usr/bin/edy.py
 chmod +x /root/TgBotWRT/*
 rm -rf /root/TELEXWRT/plugins
+rm -rf /root/TELEXWRT/image.png
 clear
-echo "masukan id username & token bot =>"
+echo "silahkan masukan id username & token bot setelah ini"
 sleep 
 clear
 nano /root/TELEXWRT/AUTH

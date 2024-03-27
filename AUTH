@@ -1,2 +1,4 @@
 BOT_TOKEN
 USER_ID
+192.168.8.1 #change the ip address of your modem if it is different 
+admin #change your modem password

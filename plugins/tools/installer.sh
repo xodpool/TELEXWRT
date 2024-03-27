@@ -19,8 +19,8 @@ chmod +x /root/TgBotWRT/*
 rm -rf /root/TELEXWRT/plugins
 rm -rf /root/TELEXWRT/image.png
 clear
-echo "silahkan masukan id username & token bot setelah ini"
-sleep 
+echo "silahkan masukan id username & token bot, dan jika ip modem & pass berbeda silahkan diganti."
+sleep 5
 clear
 nano /root/TELEXWRT/AUTH
 sleep 4

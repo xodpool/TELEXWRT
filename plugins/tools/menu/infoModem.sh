@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #source Github https://github.com/Haris131/e3372
 
 # READ AUTH
@@ -40,7 +40,22 @@ while read B dummy; do
   echo $(((GB+512)/1024)) terabytes
 done
 }
-
+bands() {
+case $1 in
+    "1")
+    echo -e '2100 MHz'
+    ;;
+    "3")
+    echo -e '1800 MHz'
+    ;;
+    "8")
+    echo -e '900 MHz'
+    ;;
+    "40")
+    echo -e '2300 MHz'
+    ;;
+    esac
+}
 network() {
 case $1 in
   "0")
@@ -185,62 +200,60 @@ fi
 info(){
  login
  clear
- echo -e "---------------------------"
  data=$(curl -s http://$ipmodem/api/webserver/SesTokInfo -H "Host: $ipmodem" -H "Connection: keep-alive" -H "Accept: */*" -H "X-Requested-With: XMLHttpRequest" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36" -H "Referer: http://$ipmodem/html/home.html" -H "Accept-Encoding: gzib, deflate" -H "Accept-Language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7" -H "Cookie: $scoki")
  sesi=$(echo "$data" | grep "SessionID=" | cut -b 10-147)
  token=$(echo "$data" | grep "TokInfo" | cut -b 10-41)
  oper=$(curl -s http://$ipmodem/api/net/current-plmn -H "Host: $ipmodem" -H "Connection: keep-alive" -H "Accept: */*" -H "X-Requested-With: XMLHttpRequest" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36" -H "Referer: http://$ipmodem/html/home.html" -H "Accept-Encoding: gzib, deflate" -H "Accept-Language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7" -H "Cookie: $sesi")
  operator=$(echo $oper|awk -F "<FullName>" '{print $2}'|awk -F "</FullName>" '{print $1}')
- echo -e "Operator : $operator"
  ip=$(curl -s http://$ipmodem/api/device/information -H "Host: $ipmodem" -H "Connection: keep-alive" -H "Accept: */*" -H "X-Requested-With: XMLHttpRequest" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36" -H "Referer: http://$ipmodem/html/home.html" -H "Accept-Encoding: gzib, deflate" -H "Accept-Language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7" -H "Cookie: $sesi")
  ipp=$(echo $ip|awk -F "<WanIPAddress>" '{print $2}'|awk -F "</WanIPAddress>" '{print $1}')
  tp=$(echo $ip|awk -F "<DeviceName>" '{print $2}'|awk -F "</DeviceName>" '{print $1}')
- echo -e "Device : $tp"
- echo -e "Wan IP : $ipp"
  dns=$(curl -s http://$ipmodem/api/monitoring/status -H "Host: $ipmodem" -H "Connection: keep-alive" -H "Accept: */*" -H "X-Requested-With: XMLHttpRequest" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36" -H "Referer: http://$ipmodem/html/home.html" -H "Accept-Encoding: gzib, deflate" -H "Accept-Language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7" -H "Cookie: $sesi")
  dns1=$(echo $dns|awk -F "<PrimaryDns>" '{print $2}'|awk -F "</PrimaryDns>" '{print $1}')
  dns2=$(echo $dns|awk -F "<SecondaryDns>" '{print $2}'|awk -F "</SecondaryDns>" '{print $1}')
  net=$(echo $dns|awk -F "<CurrentNetworkTypeEx>" '{print $2}'|awk -F "</CurrentNetworkTypeEx>" '{print $1}')
- echo -e "DNS 1 : $dns1"
- echo -e "DNS 2 : $dns2"
- echo -ne "Network : ";network $net
  td=$(curl -s http://$ipmodem/api/monitoring/traffic-statistics -H "Host: $ipmodem" -H "Connection: keep-alive" -H "Accept: */*" -H "X-Requested-With: XMLHttpRequest" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36" -H "Referer: http://$ipmodem/html/home.html" -H "Accept-Encoding: gzib, deflate" -H "Accept-Language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7" -H "Cookie: $sesi")
  tup=$(echo $td|awk -F "<TotalUpload>" '{print $2}'|awk -F "</TotalUpload>" '{print $1}'|human_print)
  tdd=$(echo $td|awk -F "<TotalDownload>" '{print $2}'|awk -F "</TotalDownload>" '{print $1}'|human_print)
- echo -e "Total Upload : $tup"
- echo -e "Total Download : $tdd"
- echo -e "---------------------------"
  par=$(curl -s http://$ipmodem/config/deviceinformation/add_param.xml -H "Host: $ipmodem" -H "Connection: keep-alive" -H "Accept: */*" -H "X-Requested-With: XMLHttpRequest" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36" -H "Referer: http://$ipmodem/html/home.html" -H "Accept-Encoding: gzib, deflate" -H "Accept-Language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7" -H "Cookie: $sesi")
  band=$(echo $par|awk -F "<band>" '{print $2}'|awk -F "</band>" '{print $1}')
  dlfreq=$(echo $par|awk -F "<freq1>" '{print $2}'|awk -F "</freq1>" '{print $1}')
  upfreq=$(echo $par|awk -F "<freq2>" '{print $2}'|awk -F "</freq2>" '{print $1}')
- echo -e "Band : $band"
  dvi=$(curl -s http://$ipmodem/api/device/signal -H "Host: $ipmodem" -H "Connection: keep-alive" -H "Accept: */*" -H "X-Requested-With: XMLHttpRequest" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.119 Safari/537.36" -H "Referer: http://$ipmodem/html/home.html" -H "Accept-Encoding: gzib, deflate" -H "Accept-Language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7" -H "Cookie: $sesi")
  pci=$(echo $dvi|awk -F "<pci>" '{print $2}'|awk -F "</pci>" '{print $1}')
  cellid=$(echo $dvi|awk -F "<cell_id>" '{print $2}'|awk -F "</cell_id>" '{print $1}')
- echo -e "PCI : $pci"
- echo -e "Cell ID : $cellid"
- echo -e "DL Frequency : $dlfreq"
- echo -e "UP Frequency : $upfreq"
- echo -e "---------------------------"
+ rsrp=$(echo $dvi|awk -F "<rsrp>" '{print $2}'|awk -F "</rsrp>" '{print $1}')
+ rssi=$(echo $dvi|awk -F "<rssi>" '{print $2}'|awk -F "</rssi>" '{print $1}')
+ rsrq=$(echo $dvi|awk -F "<rsrq>" '{print $2}'|awk -F "</rsrq>" '{print $1}')
+ sinr=$(echo $dvi|awk -F "<sinr>" '{print $2}'|awk -F "</sinr>" '{print $1}')
+
  message="
- ----------------------------------------
- Operator : $operator
- Device : $tp
- Wan IP : $ipp
- DNS 1 : $dns1
- DNS 2 : $dns2
- $(echo -ne "Network : ";network $net)
- Total Upload : $tup
- Total Download : $tdd
- Band : $band
- PCI : $pci
- Cell ID : $cellid
- DL Frequency : $dlfreq
- UP Frequency : $upfreq
- ----------------------------------------
+ ╔════════❖══════════❖════════╗
+                          𐌉𐌍𐌅Ꝋ𐌓𐌌𐌀𐌔𐌉 𐌌Ꝋ𐌃𐌄𐌌    
+╚════════❖══════════❖════════╝
+ ➥ 𝙾𝚙𝚎𝚛𝚊𝚝𝚘𝚛 : $operator
+ ➥ 𝙳𝚎𝚟𝚒𝚌𝚎 : $tp
+ ➥ 𝚆𝚊𝚗 𝙸𝙿 : $ipp
+ ➥ 𝙳𝙽𝚂 1 : $dns1
+ ➥ 𝙳𝙽𝚂 2 : $dns2
+ ➥ $(echo -ne "𝙽𝚎𝚝𝚠𝚘𝚛𝚔 : ";network $net)
+ ➥ 𝚃𝚘𝚝𝚊𝚕 𝚄𝚙𝚕𝚘𝚊𝚍 : $tup
+ ➥ 𝚃𝚘𝚝𝚊𝚕 𝙳𝚘𝚠𝚗𝚕𝚘𝚊𝚍 : $tdd
+ ➥ $(echo -ne "𝙱𝚊𝚗𝚍 : ";bands $band;) $(echo -ne "("$band")")
+ ➥ 𝙿𝙲𝙸 : $pci
+ ➥ 𝙲𝚎𝚕𝚕 𝙸𝙳 : $cellid
+ ➥ 𝙳𝙻 𝙵𝚛𝚎𝚚𝚞𝚎𝚗𝚌𝚢 : $dlfreq
+ ➥ 𝚄𝙿 𝙵𝚛𝚎𝚚𝚞𝚎𝚗𝚌𝚢 : $upfreq
+ ➥ 𝚁𝚜𝚛𝚙 : $rsrp
+ ➥ 𝚁𝚜𝚜𝚒 : $rssi
+ ➥ 𝚁𝚜𝚛𝚚 : $rsrq
+ ➥ 𝚂𝚒𝚗𝚛 : $sinr
+ ▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰
+                              𝙏𝙀𝙇𝙀𝙓𝙒𝙍𝙏 2024
+╚════════❖══════════❖════════╝
  "
 }
 
 info
 send_telegram_message "$message"
+

@@ -4,9 +4,11 @@
 # READ AUTH
 if [ -f "/root/TELEXWRT/AUTH" ]; then
     IFS=$'\n' read -d '' -r -a lines < "/root/TELEXWRT/AUTH"
-    if [ "${#lines[@]}" -ge 2 ]; then
+    if [ "${#lines[@]}" -ge 4 ]; then
         BOT_TOKEN="${lines[0]}"
         CHAT_ID="${lines[1]}"
+        ipmodem="${lines[2]}"
+        pass="${lines[3]}"
     else
         echo "Berkas auth harus memiliki setidaknya 2 baris (token dan chat ID Anda)."
         exit 1
@@ -15,10 +17,6 @@ else
     echo "Berkas auth tidak ditemukan."
     exit 1
 fi
-
-# auth
-ipmodem="192.168.8.1"
-pass="admin"
 
 
 login(){

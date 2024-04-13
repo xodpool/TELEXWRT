@@ -7,6 +7,8 @@ if [ -f "/root/TELEXWRT/AUTH" ]; then
     if [ "${#lines[@]}" -ge 2 ]; then
         BOT_TOKEN="${lines[0]}"
         CHAT_ID="${lines[1]}"
+        ipmodem="${lines[2]}"
+        pass="${lines[3]}"
     else
         echo "Berkas auth harus memiliki setidaknya 2 baris (token dan chat ID Anda)."
         exit 1
@@ -23,9 +25,6 @@ send_telegram_message() {
         -d "parse_mode=Markdown"
 }
 
-#auth
-ipmodem="192.168.8.1"
-pass="admin"
 
 
 human_print(){
@@ -256,4 +255,3 @@ info(){
 
 info
 send_telegram_message "$message"
-

@@ -11,7 +11,7 @@ opkg inatall nano
 pip3 install telepot requests python-telegram-bot
 opkg list-installed | grep python3
 pip3 list
-git clone https://github.com/ahmadqsyaa/TELEXWRT
+git clone https://github.com/xodpool/TELEXWRT
 mv /root/TELEXWRT/edy /etc/init.d/
 mv /root/TELEXWRT/edy.py /usr/bin/
 chmod +x /etc/init.d/edy

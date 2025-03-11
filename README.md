@@ -76,7 +76,7 @@ mv /root/TELEXWRT/edy /etc/init.d/ && mv /root/TELEXWRT/edy.py /usr/bin/ && chmo
 ##### AUTO INSTALLER 🚀
 
 ```
-opkg update && (cd /tmp && curl -sLko install https://raw.githubusercontent.com/xodpool/TELEXWRT/refs/heads/main/plugins/tools/installer.sh && bash install)
+opkg update && (cd /tmp && curl -sLko install https://raw.githubusercontent.com/xodpool/TELEXWRT/main/plugins/tools/installer.sh && bash install)
 ```
 *
 *
@@ -122,7 +122,7 @@ service edy stop
 ##### UNINSTALLER BOT 🗑️
 
 ```
-opkg update && (cd /tmp && curl -sLko install https://raw.githubusercontent.com/ahmadqsyaa/TELEXWRT/main/plugins/tools/uninstaller.sh && bash install)
+opkg update && (cd /tmp && curl -sLko install https://raw.githubusercontent.com/xodpool/TELEXWRT/main/plugins/tools/uninstaller.sh && bash install)
 ```
 
 *

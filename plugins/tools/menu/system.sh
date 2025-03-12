@@ -54,9 +54,9 @@ PUBLIC_IP=$(get_public_ip)
 
 # Generate the system status report
 SYSTEM_REPORT="
-╔════════❖══════❖════════╗
-           𐌌Ꝋ𐌍𐌉𐌕Ꝋ𐌓𐌉𐌍Ᏽ 𐌁Ꝋ𐌕    
-╚════════❖══════❖════════╝
+╔═══❖══════❖══╗
+     𐌌Ꝋ𐌍𐌉𐌕Ꝋ𐌓𐌉𐌍Ᏽ 𐌁Ꝋ𐌕    
+╚═══❖══════❖══╝
  ➥ 𝙷𝚘𝚜𝚝𝚗𝚊𝚖𝚎 : $(uci get system.@system[0].hostname | tr -d '\0')
  ➥ 𝙼𝚘𝚍𝚎𝚕 : $(cat /proc/device-tree/model | tr -d '\0')
  ➥ 𝙰𝚝𝚒𝚗𝚎𝚝𝚞𝚛 : $(uname -m)
@@ -70,9 +70,9 @@ SYSTEM_REPORT="
  ➥ 𝙲𝙿𝚄 𝚞𝚜𝚊𝚐𝚎 : $(mpstat 1 1 | tail -n 1 | awk '{printf "%.2f%%", 100 - $NF}')
  ➥ 𝙲𝚘𝚗𝚗𝚎𝚌𝚝𝚒𝚘𝚗 : $CONNECTION_STATUS
  ➥ 𝙸𝙿 𝙿𝚞𝚋𝚕𝚒𝚌 : $PUBLIC_IP
- ▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱▰▱
-             𝙏𝙀𝙇𝙀𝙓𝙒𝙍𝙏 2025
-╚════════❖═════❖════════╝ 
+ ▰▱▰▱▰▱▰▱▰▱▰
+      𝙏𝙀𝙇𝙀𝙓𝙒𝙍𝙏 2025
+╚═══❖═════❖═══╝
 "
 
 # Send the system report to the Telegram bot

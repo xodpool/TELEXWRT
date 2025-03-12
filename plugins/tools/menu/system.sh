@@ -23,7 +23,7 @@ check_internet() {
         echo "🟢 connected. Waktu ping: $PING_TIME ms"
         return 0
     else
-        echo "🔴Tidak ada koneksi."
+        echo "🔴 Tidak ada koneksi."
         return 1
     fi
 }

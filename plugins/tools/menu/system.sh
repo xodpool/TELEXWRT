@@ -18,12 +18,12 @@ fi
 # Fungsi untuk memeriksa koneksi internet dan mendapatkan waktu ping
 check_internet() {
     if ping -c 1 8.8.8.8 | grep 'time=' > /dev/null 2>&1; then
-        # Mengambil waktu ping
-        PING_TIME=$(ping -c 1 8.8.8.8 | grep 'time=' | awk -F 'time=' '{print $2}' | awk '{print $1}')
-        echo "Koneksi internet tersedia. Waktu ping: $PING_TIME ms"
+        # Mengambil waktu ping dan membulatkannya ke bilangan bulat
+        PING_TIME=$(ping -c 1 8.8.8.8 | grep 'time=' | awk -F 'time=' '{print $2}' | awk '{print int($1)}')
+        echo "🟢 connected. Waktu ping: $PING_TIME ms"
         return 0
     else
-        echo "Tidak ada koneksi internet."
+        echo "🔴Tidak ada koneksi."
         return 1
     fi
 }
@@ -59,8 +59,8 @@ SYSTEM_REPORT="
 ╚═══❖═══❖══╝
  ➥ 𝙷𝚘𝚜𝚝𝚗𝚊𝚖𝚎 : $(uci get system.@system[0].hostname | tr -d '\0')
  ➥ 𝙼𝚘𝚍𝚎𝚕 : $(cat /proc/device-tree/model | tr -d '\0')
- ➥ 𝙰𝚝𝚒𝚗𝚎𝚝𝚞𝚛 : $(uname -m)
- ➥ 𝙵𝚒𝚛𝚖𝚠𝚊𝚏𝚎 : $(cat /etc/openwrt_release | grep DISTRIB_DESCRIPTION | cut -d "'" -f 2 | tr -d '\0')
+ ➥ 𝙰rsit𝚎k𝚝𝚞𝚛 : $(uname -m)
+ ➥ 𝙵𝚒𝚛𝚖𝚠𝚊r𝚎 : $(cat /etc/openwrt_release | grep DISTRIB_DESCRIPTION | cut -d "'" -f 2 | tr -d '\0')
  ➥ 𝙿𝚕𝚊𝚝𝚏𝚘𝚛𝚖 : $(cat /etc/openwrt_release | grep DISTRIB_TARGET | cut -d "'" -f 2 | tr -d '\0')
  ➥ 𝙺𝚎𝚛𝚗𝚎𝚕 : $(uname -r)
  ➥ 𝙳𝚊𝚝𝚎 : $(date +"%d %b %Y | %I:%M %p")
